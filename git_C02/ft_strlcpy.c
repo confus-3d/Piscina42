@@ -6,7 +6,7 @@
 /*   By: fde-los- <fde-los-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:27:43 by fde-los-          #+#    #+#             */
-/*   Updated: 2023/07/11 23:08:19 by fde-los-         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:47:41 by fde-los-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int	count;
+	unsigned int	count;
+	unsigned int	srccount;
 
 	count = 0;
-	while (src[count] != '\0' && n != 0)
+	srccount = 0;
+	while (src[srccount])
+		srccount++;
+	while (src[count] != '\0' && size != 0)
 	{
 		dest[count] = src[count];
 		count++;
-		n--;
+		size--;
 	}
-	while (n != 0)
-	{
-		dest[count] = '\0';
-		count++;
-		n--;
-	}
-	return (size);
+	dest[count] = '\0';
+	return (srccount);
 }
 /*
 int	main(void)

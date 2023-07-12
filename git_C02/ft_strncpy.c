@@ -6,7 +6,7 @@
 /*   By: fde-los- <fde-los-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 20:27:43 by fde-los-          #+#    #+#             */
-/*   Updated: 2023/07/11 21:11:03 by fde-los-         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:47:30 by fde-los-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int	count;
+	unsigned int	count;
 
 	count = 0;
 	while (src[count] != '\0' && n != 0)
@@ -34,10 +34,10 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 /*
 int	main(void)
 {
-	char	src[] = "cacafuti";
-	char	dest[] = "42";
+	char	src[100] = "cacafuti";
+	char	dest[100] = "42";
 
-	ft_strncpy(dest, src, 20);
+	ft_strncpy(dest, src, 35);
 	printf("%s", dest);
 }
 */
