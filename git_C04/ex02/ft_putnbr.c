@@ -6,7 +6,7 @@
 /*   By: fde-los- <fde-los-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 09:36:23 by fde-los-          #+#    #+#             */
-/*   Updated: 2023/07/18 14:49:10 by fde-los-         ###   ########.fr       */
+/*   Updated: 2023/07/18 15:35:13 by fde-los-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ void	ft_putnbr(int nb)
 {
 	unsigned int	number;
 
-	number = -1;
 	if (nb < 0)
 	{
 		ft_putchar('-');
-		number = number * nb;
+		number = nb * -1;
 	}
 	else
 		number = nb;

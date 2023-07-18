@@ -6,7 +6,7 @@
 /*   By: fde-los- <fde-los-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 09:58:50 by fde-los-          #+#    #+#             */
-/*   Updated: 2023/07/14 15:08:41 by fde-los-         ###   ########.fr       */
+/*   Updated: 2023/07/18 15:34:00 by fde-los-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ void	ft_putchar(char c)
 	write (1, &c, 1);
 }
 
-int	ft_error(int *size, char *base)
+int	ft_error(unsigned int *size, char *base)
 {
-	int	helper;
-	int	counter;
+	unsigned int	helper;
 
 	helper = 0;
-	counter = 0;
 	while (base[*size] != '\0')
 	{
 		if (base[*size] == '+' || base[*size] == '-')
@@ -46,9 +44,10 @@ int	ft_error(int *size, char *base)
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int	resto;
-	int	size;
+	unsigned int	size;
 	int	final[32];
 	int	i;
+	unsigned int	number;
 
 	resto = 0;
 	size = 0;
@@ -58,15 +57,17 @@ void	ft_putnbr_base(int nbr, char *base)
 	if (nbr < 0)
 	{
 		ft_putchar('-');
-		nbr *= -1;
+		number = nbr * -1;
 	}
-	while (nbr >= size)
+	else
+		number = nbr;
+	while (number >= size)
 	{
-		resto = nbr % size;
-		nbr = nbr / size;
+		resto = number % size;
+		number = number / size;
 		final[i++] = resto;
 	}
-	final[i] = nbr;
+	final[i] = number;
 	while (i >= 0)
 		ft_putchar(base[final[i--]]);
 }
@@ -97,9 +98,10 @@ int	ft_atoi(char *str)
 	number = number * sign;
 	return (number);
 }
-
+/*
 int	main(int argc, char **argv)
 {
 	if (argc > 2)
 		ft_putnbr_base(ft_atoi(argv[1]), argv[2]);
 }
+*/
