@@ -6,7 +6,7 @@
 /*   By: fde-los- <fde-los-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 17:47:05 by fde-los-          #+#    #+#             */
-/*   Updated: 2023/07/19 20:17:03 by fde-los-         ###   ########.fr       */
+/*   Updated: 2023/07/24 13:06:52 by fde-los-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #define SIZE 10
 
-void	print(int grid[SIZE][SIZE], int queens, int c)
+void	print(int grid[SIZE][SIZE], int queens, int c, int *solutions)
 {
 	int		i;
 	int		j;
@@ -36,6 +36,7 @@ void	print(int grid[SIZE][SIZE], int queens, int c)
 			j++;
 		}
 		write (1, "\n", 1);
+		(*solutions)++;
 	}
 }
 
@@ -48,16 +49,8 @@ int	v(int grid[SIZE][SIZE], int row, int col)
 		if (grid[row][k] == 1 || grid[k++][col] == 1)
 			return (0);
 	k = -1;
-	while (row + ++k < SIZE && col + k < SIZE)
-		if (grid[row + k][col + k] == 1)
-			return (0);
-	k = -1;
 	while ((row + ++k < SIZE && col - k >= 0))
 		if (grid[row + k][col - k] == 1)
-			return (0);
-	k = -1;
-	while (row - ++k >= 0 && col + k < SIZE)
-		if (grid[row - k][col + k] == 1)
 			return (0);
 	k = -1;
 	while (row - ++k >= 0 && col - k >= 0)
@@ -78,45 +71,63 @@ void	next(int *nextrow, int *nextcol, int row, int col)
 }
 
 //i 0 contador, i 1 valid flag, i 2 invalid flag, i 3 nextrow, i 4 next col
-void	generate(int g[SIZE][SIZE], int r, int c, int queens)
+void	generate(int g[SIZE][SIZE], int old[2], int queens, int *solutions)
 {
-	int	i[5];
+	int	i[3];
+	int	new[2];
 
 	i[0] = 1;
 	i[1] = 0;
 	i[2] = 0;
-	print(g, queens, c);
-	while (i[0]++ < 3 && c != SIZE)
+	print(g, queens, old[1], solutions);
+	while (i[0]++ < 3 && old[1] != SIZE)
 	{
-		if (v(g, r, c) == 1 && i[1] == 0)
+		if (v(g, old[0], old[1]) == 1 && i[1] == 0 && i[1]++ == 0)
 		{
-			i[1]++;
-			g[r][c] = 1;
-			next(&i[3], &i[4], r, c);
-			generate(g, i[3], i[4], ++queens);
+			g[old[0]][old[1]] = 1;
+			next(&new[0], &new[1], old[0], old[1]);
+			generate(g, new, ++queens, solutions);
 			queens--;
 		}
-		else if ((v(g, r, c) == 1 && i[1] == 1) || (v(g, r, c) == 0 && i[2] == 0))
+		else if (i[1] == 1 || (v(g, old[0], old[1]) == 0 && i[2] == 0))
 		{
 			i[2]++;
-			g[r][c] = 2;
-			next(&i[3], &i[4], r, c);
-			generate(g, i[3], i[4], queens);
+			g[old[0]][old[1]] = 2;
+			next(&new[0], &new[1], old[0], old[1]);
+			generate(g, new, queens, solutions);
 		}
-		g[r][c] = 3;
+		g[old[0]][old[1]] = 3;
 	}
 }
 
 int	ft_ten_queens_puzzle(void)
 {
 	int	grid[SIZE][SIZE];
+	int	x;
+	int	y;
+	int	old[2];
+	int	solutions;
 
-	generate(grid, 0, 0, 0);
-	return (0);
+	solutions = 0;
+	x = 0;
+	old[0] = 0;
+	old[1] = 0;
+	while (x < SIZE)
+	{
+		y = 0;
+		while (y < SIZE)
+		{
+			grid[x][y] = 0;
+			y++;
+		}
+		x++;
+	}
+	generate(grid, old, 0, &solutions);
+	return (solutions);
 }
-
+/*
 int	main(void)
 {
-	ft_ten_queens_puzzle();
+	printf("%d", ft_ten_queens_puzzle());
 }
-
+*/
