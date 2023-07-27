@@ -6,7 +6,7 @@
 /*   By: fde-los- <fde-los-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:13:10 by fde-los-          #+#    #+#             */
-/*   Updated: 2023/07/20 14:46:24 by fde-los-         ###   ########.fr       */
+/*   Updated: 2023/07/21 12:38:21 by fde-los-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,11 @@ char	*ft_strdup(char *src)
 	}
 	return (dst);
 }
-
+/*
 int	main(void)
 {
 	char src[10] = "Piscina";
 	
 	printf("%s", ft_strdup(src));
 }
-
-
-
+*/
