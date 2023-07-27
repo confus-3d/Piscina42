@@ -6,7 +6,7 @@
 /*   By: fde-los- <fde-los-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 15:59:33 by fde-los-          #+#    #+#             */
-/*   Updated: 2023/07/24 19:24:39 by fde-los-         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:36:20 by fde-los-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	*ft_range(int min, int max)
 {
 	int	counter;
-	int *solve;
+	int	*solve;
 
 	counter = 0;
 	if (min >= max)

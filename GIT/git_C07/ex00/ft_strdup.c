@@ -6,7 +6,7 @@
 /*   By: fde-los- <fde-los-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:13:10 by fde-los-          #+#    #+#             */
-/*   Updated: 2023/07/21 12:38:21 by fde-los-         ###   ########.fr       */
+/*   Updated: 2023/07/27 14:35:56 by fde-los-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 char	*ft_strdup(char *src)
 {
-	char *dst;
-	int	counter;
+	char	*dst;
+	int		counter;
 
 	counter = 0;
 	while (src[counter] != '\0')
